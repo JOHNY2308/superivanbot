@@ -17,7 +17,8 @@ bot = telebot.TeleBot(token, threaded=False)
 
 bot.remove_webhook()
 time.sleep(1)
-bot.set_webhook(url='https://telegram-webhook.herokuapp.com' + '/' + token)
+bot.set_webhook(url='https://telegram-bot-new.herokuapp.com/' + '/' + token)
+
 
 app = Flask(__name__)
 sslify = SSLify(app)
@@ -35,7 +36,7 @@ def webhook():
 
 
 @bot.message_handler(commands=['help'])
-def helpCommand(message):
+def helpcommand(message):
     bot.send_message(message.chat.id, 'Привет *' + message.from_user.first_name + '*!', parse_mode='Markdown')
 
 @bot.message_handler(commands=['money'])
@@ -47,13 +48,7 @@ def moneyCommand(message):
         # texts[1] -> asdf
         # texts[2] -> 1234
         # do something you want to do.
-        bot.send_message(message.chat.id, 'Привет *'
-                         + message.from_user.first_name
-                         + '*, на текущий момент курс ' + '*'
-                         + texts[1] + ' *'
-                         + 'составляет: ' + '*'
-                         + get_money(texts[2], texts[1])
-                         + '*', parse_mode='Markdown')
+        bot.send_message(message.chat.id, 'Привет *' + message.from_user.first_name + '*, на текущий момент курс ' + '*' + texts[1] + ' *' + 'составляет: ' + '*' + get_money(texts[2], texts[1]) + '*', parse_mode='Markdown')
     except Exception as e:
         logger.error(e.message)
 
