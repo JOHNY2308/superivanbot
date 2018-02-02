@@ -17,7 +17,7 @@ bot = telebot.TeleBot(token, threaded=False)
 
 bot.remove_webhook()
 time.sleep(1)
-bot.set_webhook(url='https://telegram-webhook.herokuapp.com/' + '/' + token)
+bot.set_webhook(url='https://telegram-webhook.herokuapp.com' + '/' + token)
 
 app = Flask(__name__)
 sslify = SSLify(app)
